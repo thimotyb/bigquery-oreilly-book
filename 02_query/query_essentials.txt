@@ -1,6 +1,13 @@
 -- Copyright 2018 Google LLC.
 -- SPDX-License-Identifier: Apache-2.0
 
+--- how many records?
+SELECT
+  count(*)
+FROM
+  `bigquery-public-data`.new_york_citibike.citibike_trips
+
+
 -- simple select
 SELECT
   gender, tripduration
