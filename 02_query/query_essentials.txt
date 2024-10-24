@@ -275,7 +275,7 @@ SELECT * from example
 WHERE numrides < 2000
 
 
--- Join, explained
+-- Join, explained ----QUERY STARTS HERE
 WITH bicycle_rentals AS (
   SELECT
     COUNT(starttime) as num_trips,
@@ -311,6 +311,8 @@ FROM bicycle_rentals AS bk
 JOIN rainy_days AS wx
 ON wx.date = bk.trip_date
 GROUP BY wx.rainy
+
+-----PREVIOUS QUERY ENDS HERE---------------
 
 WITH bicycle_rentals AS (
   SELECT
