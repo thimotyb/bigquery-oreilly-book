@@ -8,6 +8,13 @@ FROM
   `bigquery-public-data`.new_york_citibike.citibike_trips
 LIMIT 5
 
+-- with ordering to get results
+SELECT
+  gender, tripduration AS rental_duration
+FROM
+  `bigquery-public-data`.new_york_citibike.citibike_trips
+order by tripduration desc limit 5
+
 -- backtick only around project
 SELECT
   gender, tripduration
