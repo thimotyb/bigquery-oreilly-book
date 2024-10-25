@@ -12,7 +12,7 @@ SCHEMA="--schema=schema.json --skip_leading_rows=1"
 bq $LOC \
    load --null_marker=NULL --replace \
    --source_format=CSV $SCHEMA \
-   ch03.college_scorecard \
-   /tmp/college_scorecard.csv.gz
+   ch04.college_scorecard \
+   ./college_scorecard.csv.gz
 
 #   ./college_scorecard.csv.gz \
