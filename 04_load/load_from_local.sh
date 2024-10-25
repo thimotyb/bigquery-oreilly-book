@@ -4,6 +4,7 @@ LOC="--location US"
 
 bq $LOC mk ch03
 
+# Execute this to fix data!
 zless ./college_scorecard.csv.gz | sed 's/PrivacySuppressed/NULL/g' | gzip > /tmp/college_scorecard.csv.gz
 
 #SCHEMA="--autodetect"
@@ -13,6 +14,6 @@ bq $LOC \
    load --null_marker=NULL --replace \
    --source_format=CSV $SCHEMA \
    ch04.college_scorecard \
-   ./college_scorecard.csv.gz
+   /tmp/college_scorecard.csv.gz
 
 #   ./college_scorecard.csv.gz \
