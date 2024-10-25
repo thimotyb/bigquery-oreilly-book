@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOC="--location US"
-INPUT=gs://bigquery-oreilly-book/college_scorecard.csv
+INPUT=gs://bigquery-timo/college_scorecard.csv
 
 bq $LOC mk ch04 # okay if it fails
 bq $LOC rm ch04.college_scorecard_gcs # replace
