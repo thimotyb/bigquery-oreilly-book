@@ -37,3 +37,5 @@ bq $LOC \
 
 bq mk --external_table_definition=$DEF ch04.college_scorecard_gcs
 
+# Now try to query the table
+
