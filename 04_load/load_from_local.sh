@@ -2,7 +2,7 @@
 
 LOC="--location US"
 
-bq $LOC mk ch03
+bq $LOC mk ch04
 
 # Execute this to fix data!
 zless ./college_scorecard.csv.gz | sed 's/PrivacySuppressed/NULL/g' | gzip > /tmp/college_scorecard.csv.gz
