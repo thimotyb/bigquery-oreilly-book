@@ -1,4 +1,6 @@
 #!/bin/bash
+# If necessary create buckt and copy data from shell with
+# gsutil cp college_scorecard.csv gs://bigquery-timo
 
 LOC="--location US"
 INPUT=gs://bigquery-timo/college_scorecard.csv
