@@ -73,4 +73,26 @@ bq load --source_format=AVRO \
 # Loading and Inserting Data
 bq insert ch05.rentals_last_hour data.json
 
+# Extract data
+bq extract --format=json ch05.rentals_last_hour gs://bigquery-timo/rentals.json
+
+# Execute queries
+bq query \
+     --use_legacy_sql=false \
+     'SELECT MAX(duration) FROM `bigquery-public-data`.london_bicycles.cycle_hire'
+
+# providing complex queries
+#!/bin/bash
+read -d '' QUERY_TEXT << EOF
+SELECT 
+  start_station_name
+  , AVG(duration) as duration
+  , COUNT(duration) as num_trips
+FROM \`bigquery-public-data\`.london_bicycles.cycle_hire
+GROUP BY start_station_name 
+ORDER BY num_trips DESC 
+LIMIT 5
+EOF
+bq query --use_legacy_sql=false $QUERY_TEXT
+
 
