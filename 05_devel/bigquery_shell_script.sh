@@ -39,5 +39,38 @@ bq mk --table \
      --label persistence:volatile \
      ch05.rentals_last_hour schema.json
 
+# Copying Dataset
+bq cp ch04.old_table ch05.new_table
+# Wait copy to complete to synch script
+bq wait --fail_on_error job_id
+
+# Backup and restore a dataset (within 7 days using time travel)
+CREATE OR REPLACE TABLE dataset.table_restored
+AS 
+SELECT *
+FROM dataset.table
+FOR SYSTEM TIME AS OF 
+  TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL -1 DAY)
+
+# Permanent Backup/Restore
+# Backup
+bq show --schema dataset.table. # schema.json
+bq --format=json show dataset.table.  # tbldef.json
+bq extract --destination_format=AVRO \
+           dataset.table gs://.../data_*.avro # AVRO files
+
+# Restore
+bq load --source_format=AVRO \
+    --time_partitioning_expiration ... \
+    --time_partitioning_field ... \
+    --time_partitioning_type ... \
+    --clustering_fields ... \
+    --schema ... \
+    todataset.table_name \
+    gs://.../data_*.avro
+
+##################
+# Loading and Inserting Data
+bq insert ch05.rentals_last_hour data.json
 
 
