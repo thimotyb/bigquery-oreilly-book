@@ -1,3 +1,4 @@
+# REDUCING DATA READ
 # not optimized
 SELECT
   MIN(start_station_name) AS start_station_name
@@ -28,3 +29,4 @@ GROUP BY
   start_station_name, end_station_name
 ORDER BY num_trips DESC
 LIMIT 10
+
